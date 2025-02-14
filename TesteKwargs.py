@@ -15,6 +15,11 @@ def ImprimeArgumentos(*argumentos):
 # :^5 = '  1  '
 
 ImprimeArgumentos(1, "python", 15.15)
+# resposta:
+# |  1º| argumento é |         1|
+# |  2º| argumento é |    python|
+# |  3º| argumento é |     15.15|
+
 
 # espaço:
 print("\n")
@@ -26,7 +31,14 @@ def ImprimeKWArgumentos(**argumentos):
     for chave, valor in argumentos.items(): # 'argumentos' é um dicionário então tem que usar o '.items()' para extrair valores
         print(f"|{chave:<15}| : |{valor:>15}|") # você já sabe porque precisa do f no inicio
 
+
 ImprimeKWArgumentos(Nome='Heitor', Sobrenome='Vieira', idade=18)
+# resposta
+# |Nome           | : |         Heitor|
+# |Sobrenome      | : |         Vieira|
+# |idade          | : |             18|
+
+
 
 # espaço:
 print('\n')
