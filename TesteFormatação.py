@@ -9,7 +9,7 @@ print("Nome : Heitor")
 nome = 'Heitor'
 print(f"Nome : {nome}")
 
-input("Precione enter")
+input("Precione enter\n")
 
 # Formatação de print f-string
 
@@ -25,7 +25,7 @@ print(f"Nome : |{nome:<15}|\n")
 print("Alinhamento ao centro:")
 print(f"Nome : |{nome:^15}|\n")
 
-input("\nPrecione enter")
+input("\nPrecione enter\n")
 
 
 # Alinhamento com pontos
