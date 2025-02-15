@@ -14,15 +14,18 @@ def ImprimeArgumentos(*argumentos):
 # :<5 = '1    '
 # :^5 = '  1  '
 
-ImprimeArgumentos(1, "python", 15.15)
-# resposta:
+# Para o programa ter pausas adicione input
+input("Precione enter para imprimir argumentos")
+
+ImprimeArgumentos(1, "python", 15.15, "arg 4") # adicione mais argumentos e veja o que aconteçe
+# resposta esperada:
 # |  1º| argumento é |         1|
 # |  2º| argumento é |    python|
 # |  3º| argumento é |     15.15|
+# |  4º| argumento é |     arg 4|
 
-
-# espaço:
-print("\n")
+# espaço para pular      1 linha  : print()
+print("\n") # para pular 2 linhas : print("\n")
 
 # agora para usar kwargs (key word argument), tipo um dicionário:
 # para declaralo precisa do '**'
@@ -31,30 +34,33 @@ def ImprimeKWArgumentos(**argumentos):
     for chave, valor in argumentos.items(): # 'argumentos' é um dicionário então tem que usar o '.items()' para extrair valores
         print(f"|{chave:<15}| : |{valor:>15}|") # você já sabe porque precisa do f no inicio
 
+# Para o programa ter pausas adicione input
+input("Precione enter para imprimir kwargumentos")
 
-ImprimeKWArgumentos(Nome='Heitor', Sobrenome='Vieira', idade=18)
-# resposta
+ImprimeKWArgumentos(Nome='Heitor', Sobrenome='Vieira', idade=18) # pode editar isso para ver o que aconteçe
+# resposta esperada:
 # |Nome           | : |         Heitor|
 # |Sobrenome      | : |         Vieira|
 # |idade          | : |             18|
 
 
-
-# espaço:
 print('\n')
 
 # agora para transformar argumentos de input em kwargs
 # primeiro metodo:
+print("primeiro método:\n'(**{var_chave:var_valor})'")
 
 var_chave = input("Digite uma Chave: ")
 var_valor = input("Digite um Valor: ")
 
+print()
+
 ImprimeKWArgumentos(**{var_chave:var_valor}) # o ** é necessário para ele saber que é um kwarg
 
-# espaço
-print('\n')
+print()
 
 # segundo metodo:
+print("Segundo método:\n'argumento_kw = {var_chave:var_valor}'\n'ImprimeKWArgumentos(**argumento_kw)'")
 
 var_chave = input("Digite uma Chave: ")
 var_valor = input("Digite um Valor: ")
