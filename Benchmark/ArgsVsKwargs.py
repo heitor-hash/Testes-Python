@@ -1,5 +1,6 @@
 import time
 
+
 def add_fixed(a, b):
     return a + b
 
