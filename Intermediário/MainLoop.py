@@ -32,7 +32,7 @@ try:
 
         # digite um numero ou operação:
         print("Digite um número ou função")
-        print("Soma | Mediana")
+        print("Soma | Mediana | Sair")
         
         # recebedor de numero -> tuple
         nums = []

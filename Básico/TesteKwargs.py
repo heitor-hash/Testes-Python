@@ -1,5 +1,12 @@
 #teste para *args e **kwargs
 
+# Argumentos fixados são o padrão
+# Para declaralos só precisa o escrever
+def ImprimeArgFixado(argumento):
+    print(argumento)
+
+
+
 # *args são uma lista de argumentos
 # para declaralos precisa do '*'
 
@@ -68,6 +75,14 @@ var_valor = input("Digite um Valor: ")
 argumento_kw = {var_chave:var_valor}
 
 ImprimeKWArgumentos(**argumento_kw) # o ** é necessário porque ele espera "var=valor" mas recebe apenas "var"
+
+
+# Observações finais:
+# *args é levemente mais lento que os Argumentos fixados
+# **kwargs é levemente mais lento que o *args
+
+# Então se você tem um codigo que roda umas milhares de vezes por segundo
+# é preferivel você usar os argumentos fixados
 
 
 # o programa fecha automaticamente quando não tem mais nada para fazer
