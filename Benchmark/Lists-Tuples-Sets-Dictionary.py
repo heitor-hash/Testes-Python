@@ -3,6 +3,8 @@ import time
 global index
 index = 1
 
+print("O programa está rodando, mas adicionar itens em uma tupla demora pra carai")
+
 global lista
 lista:list = ['a']
 def list_add_item(item):
