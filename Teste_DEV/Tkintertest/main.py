@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 texto_coletado:str
 
 def OpenAndRead(nome_do_arquivo:str):
@@ -29,7 +30,7 @@ def TextToFile():
 
 root = tk.Tk()
 root.geometry('500x400')
-root.title("Teste de Abas e Arquivo")
+root.title("Teste de subArquivos")
 
 
 tabControl = ttk.Notebook(root)
