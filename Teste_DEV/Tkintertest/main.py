@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
+import dataHandler
 
 texto_coletado:str
 
@@ -38,10 +38,12 @@ tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
 tab2 = ttk.Frame(tabControl)
 tab3 = ttk.Frame(tabControl)
+tab4 = ttk.Frame(tabControl)
 
 tabControl.add(tab1, text='File')
 tabControl.add(tab2, text='Texto')
 tabControl.add(tab3, text='Salvar')
+tabControl.add(tab4, text='INDEV')
 
 tabControl.pack(expand=1, # faz com que o tab ocupe o root todo
                 fill='both') # em que eixo é prenxido, x, y, ambos ou nenhum
@@ -49,6 +51,7 @@ tabControl.pack(expand=1, # faz com que o tab ocupe o root todo
 ttk.Label(tab1, text="Selecione um arquivo").pack()
 ttk.Label(tab2, text="Texto do arquivo").pack()
 ttk.Label(tab3, text="Digite o nome do arquivo para salvar").pack()
+ttk.Label(tab4, text="EXCEL TEST").pack()
 
 # TAB 1
 
@@ -73,6 +76,33 @@ entrada_nome_do_arquivo_para_salvar.pack()
 
 botao_salvar_arquivo = tk.Button(tab3, text='Salvar', command=TextToFile)
 botao_salvar_arquivo.pack()
+
+# TAB 4
+
+dicio = {}
+dicio_to_write = {'CHAVE 1': 'Valor 1', 'CHAVE 2' : 'Valor 2'}
+def EXCEL_read_to_dict():
+    global dicio
+    wb = dataHandler.open_workbook_dados()
+    dicio = dataHandler.worksheet_to_dict(wb=wb, sheet='dicio')
+    wb.close()
+    lista = []
+    for key, value in dicio.items():
+        lista.append(key)
+        lista.append(value)
+    print(f"DICIO: {lista}")
+    
+def EXCEL_dict_to_xlsx():
+    global dicio_to_write
+    wb = dataHandler.open_workbook_dados()
+    dataHandler.dict_to_worksheet(wb=wb, sheet='dicio', dictionary=dicio_to_write)
+    wb.close()
+
+tab4_button_read_xl_dados = tk.Button(tab4, text='READ', command=EXCEL_read_to_dict)
+tab4_button_read_xl_dados.pack()
+
+tab4_button_write_xl_dados = tk.Button(tab4, text='WRITE', command=EXCEL_dict_to_xlsx)
+tab4_button_write_xl_dados.pack()
 
 
 root.mainloop()
