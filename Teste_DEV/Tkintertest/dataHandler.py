@@ -1,3 +1,5 @@
+import easygui
+import os
 import openpyxl as xl
 from openpyxl.utils import column_index_from_string
 from openpyxl.utils import get_column_letter
@@ -5,16 +7,24 @@ from openpyxl.utils import get_column_letter
 
 
 
-# try to open a workbook called dados.xlsx
-def open_workbook_dados() -> xl.Workbook:
+# try to open a workbook
+def open_workbook(filename:str) -> xl.Workbook:
     try:
-        wb = xl.load_workbook(filename="dados.xlsx")
+        wb = xl.load_workbook(filename=filename)
+        print("WORK")
+        return wb
+    except:
+        raise FileNotFoundError
+    
+def new_workbook(filename:str) -> xl.Workbook:
+    try:
+        wb = xl.load_workbook(filename=filename)
         print("WORK")
         return wb
     except:
         wb = xl.Workbook()
-        print("WORKING")
         return wb
+    
 
 def worksheet_to_dict(wb: xl.Workbook, sheet: str) -> dict | None:
     ws = wb[sheet]
@@ -29,7 +39,7 @@ def worksheet_to_dict(wb: xl.Workbook, sheet: str) -> dict | None:
     dicio = dict(zip(keys, values))
     return dicio
 
-def dict_to_worksheet(wb: xl.Workbook, sheet: str, dictionary: dict) -> None:
+def dict_to_worksheet(wb: xl.Workbook, sheet: str, dictionary: dict, filename: str) -> None:
     try:
         ws = wb[sheet]
     except:
@@ -53,4 +63,23 @@ def dict_to_worksheet(wb: xl.Workbook, sheet: str, dictionary: dict) -> None:
         ws[f'{a}2'] = value
         index += 1
     
-    wb.save(filename='dados.xlsx')
+    wb.save(filename=filename)
+
+def easy_xl_file_selector() -> str:
+    item = easygui.fileopenbox(
+        default='*.xlsx',
+        title='Selecione arquivo Excel para dados',
+        filetypes=['*.xlsx']
+        )
+    print(f"O arquivo é: {item}")
+    return item
+    
+def easy_xl_save_file() -> str:
+    name:str = easygui.filesavebox(default='*.xlsx',
+                        title='Salvar como',# quero que sempre salve como arquivo xlsx
+                        filetypes=['*.xlsx']
+                        )
+    if name:
+        n, ext = os.path.splitext(name)
+        name = n + '.xlsx'
+    return name

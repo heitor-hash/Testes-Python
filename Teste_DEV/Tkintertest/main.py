@@ -83,7 +83,8 @@ dicio = {}
 dicio_to_write = {'CHAVE 1': 'Valor 1', 'CHAVE 2' : 'Valor 2'}
 def EXCEL_read_to_dict():
     global dicio
-    wb = dataHandler.open_workbook_dados()
+    path = dataHandler.easy_xl_file_selector()
+    wb = dataHandler.open_workbook(path)
     dicio = dataHandler.worksheet_to_dict(wb=wb, sheet='dicio')
     wb.close()
     lista = []
@@ -94,8 +95,9 @@ def EXCEL_read_to_dict():
     
 def EXCEL_dict_to_xlsx():
     global dicio_to_write
-    wb = dataHandler.open_workbook_dados()
-    dataHandler.dict_to_worksheet(wb=wb, sheet='dicio', dictionary=dicio_to_write)
+    path = dataHandler.easy_xl_save_file()
+    wb = dataHandler.new_workbook(path)
+    dataHandler.dict_to_worksheet(wb=wb, sheet='dicio', dictionary=dicio_to_write, filename=path)
     wb.close()
 
 tab4_button_read_xl_dados = tk.Button(tab4, text='READ', command=EXCEL_read_to_dict)
