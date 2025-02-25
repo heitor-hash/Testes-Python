@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import dataHandler
+import tkWidgets
 
 texto_coletado:str
 
@@ -79,29 +80,58 @@ botao_salvar_arquivo.pack()
 
 # TAB 4
 
+tab4_entries_list_keys = []
+tab4_entries_list_values = []
+
 dicio = {}
-dicio_to_write = {'CHAVE 1': 'Valor 1', 'CHAVE 2' : 'Valor 2'}
 def EXCEL_read_to_dict():
-    global dicio
+    global dicio, tab4_entries_list_keys, tab4_entries_list_values
     path = dataHandler.easy_xl_file_selector()
     wb = dataHandler.open_workbook(path)
     dicio = dataHandler.worksheet_to_dict(wb=wb, sheet='dicio')
     wb.close()
     lista = []
+    tab4_entries_list_keys = []
+    tab4_entries_list_values = []
+    i = 0
     for key, value in dicio.items():
         lista.append(key)
         lista.append(value)
-    print(f"DICIO: {lista}")
+        
+        
+        f, k, v = tkWidgets.entries_key40_to10_value60(key, value)
+        f.master = tab4_canva
+        f.pack(in_=tab4_canva)
+        
+        tab4_entries_list_keys.append(k)
+        tab4_entries_list_values.append(v)
+    print(f"LISTA: {tab4_entries_list_keys}")
     
 def EXCEL_dict_to_xlsx():
-    global dicio_to_write
+    global tab4_entries_list_values, tab4_entries_list_keys
     path = dataHandler.easy_xl_save_file()
     wb = dataHandler.new_workbook(path)
+    i = 0
+    dicio_to_write = {}
+    for key, value in zip(tab4_entries_list_keys, tab4_entries_list_values):
+        dicio_to_write[key.get()] = value.get()
+        
+    print("DICIONARIO", dicio_to_write)
     dataHandler.dict_to_worksheet(wb=wb, sheet='dicio', dictionary=dicio_to_write, filename=path)
     wb.close()
 
+    
+
 tab4_button_read_xl_dados = tk.Button(tab4, text='READ', command=EXCEL_read_to_dict)
 tab4_button_read_xl_dados.pack()
+
+# Entries para colocar dados em forma de dicionário
+# Create a canvas
+
+i = tkWidgets.canvas_xy_vscroll(tab4)
+tab4_frame_for_canvas = i[0]
+tab4_canva = i[1]
+tab4_frame_for_canvas.pack()
 
 tab4_button_write_xl_dados = tk.Button(tab4, text='WRITE', command=EXCEL_dict_to_xlsx)
 tab4_button_write_xl_dados.pack()
