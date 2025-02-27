@@ -99,14 +99,25 @@ def EXCEL_read_to_dict():
         lista.append(value)
         
         
-        f, k, v = tkWidgets.entries_key40_to10_value60(key, value)
+        f, k, v = tkWidgets.entries_key_to_value(key, value)
         f.master = tab4_canva
         f.pack(in_=tab4_canva)
         
         tab4_entries_list_keys.append(k)
         tab4_entries_list_values.append(v)
     print(f"LISTA: {tab4_entries_list_keys}")
+
+def EXCEL_add_kw_entry():
+    global tab4_entries_list_keys, tab4_entries_list_values, tab4_frame_for_canvas
     
+    f, k, v = tkWidgets.entries_key_to_value('', '')
+    f.master = tab4_canva
+    f.pack(in_=tab4_canva)
+    
+    tab4_entries_list_keys.append(k)
+    tab4_entries_list_values.append(v)
+
+
 def EXCEL_dict_to_xlsx():
     global tab4_entries_list_values, tab4_entries_list_keys
     path = dataHandler.easy_xl_save_file()
@@ -128,13 +139,13 @@ tab4_button_read_xl_dados.pack()
 # Entries para colocar dados em forma de dicionário
 # Create a canvas
 
-i = tkWidgets.canvas_xy_vscroll(tab4)
-tab4_frame_for_canvas = i[0]
-tab4_canva = i[1]
+tab4_frame_for_canvas, tab4_canva = tkWidgets.canvas_xy_vscroll(tab4)
 tab4_frame_for_canvas.pack()
 
 tab4_button_write_xl_dados = tk.Button(tab4, text='WRITE', command=EXCEL_dict_to_xlsx)
 tab4_button_write_xl_dados.pack()
 
+tab4_button_add_kw_entry = tk.Button(tab4, text="ADD", command=EXCEL_add_kw_entry)
+tab4_button_add_kw_entry.pack()
 
 root.mainloop()
