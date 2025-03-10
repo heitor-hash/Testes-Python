@@ -1,0 +1,131 @@
+<RootWidget>:
+    orientation: 'vertical'
+    padding: 30
+    spacing: 30
+    
+    canvas.before:
+        Color: 
+            rgba:[1,1,1,1]
+        
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    BoxLayout:
+        height: dp(50)
+        spacing: dp(10)
+        orientation: 'horizontal'
+        
+
+        Label:
+            text: "Texto Exemplo"
+            color: '#000000'
+
+    Label:
+        id: meu_label
+        text: "Bem-vindo ao aplicativo Kivy!"
+        font_size: 24
+        color: '#000000'
+
+    # BOTÃO COM FUNC
+    Button:
+        text: "Clique aqui KKKKK"
+        color: '#000000' # cor do texto do botão
+        background_color: .7,.7,.7,.9
+        background_normal: ''
+        on_release: root.open_file()
+    
+    
+    
+    ScrollView:
+        scroll_x: 0
+        scroll_y: 1
+        do_scroll: 1
+        height: dp(30)
+        size_hint: 1, 0.5
+
+        BoxLayout:
+            orientation: 'vertical'
+            height: dp(70)
+            size_hint: 1, 2
+
+            # BOX 1
+            BoxLayout:
+                pos_hint: {'x': 0.0,'center_y': 1.0}
+                size_hint_max_y: dp(20)
+
+                BoxLayout:
+                    height: dp(15)
+                    width: dp(15)
+                    size_hint_max_x: dp(15)
+                    size_hint_max_y: dp(15)
+                    size_hint_y: 0
+                    canvas.before:
+                        Color:
+                            rgba: [0.7,0.7,0.7,0.9]
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+                    CheckBox:
+                        active:0
+
+
+            # BOX 2
+            BoxLayout:
+                pos_hint: {'x': 0.0,'center_y': 1.0}
+                size_hint_max_y: dp(20)
+
+                BoxLayout:
+                    height: dp(15)
+                    width: dp(15)
+                    size_hint_max_x: dp(15)
+                    size_hint_max_y: dp(15)
+                    size_hint_y: 0
+
+                    canvas.before:
+                        Color:
+                            rgba: [0.7,0.7,0.7,0.9]
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+                    CheckBox:
+                        active:0
+            # BOX 3
+            BoxLayout:
+                pos_hint: {'x': 0.0,'center_y': 1.0}
+                size_hint_max_y: dp(20)
+
+                BoxLayout:
+                    height: dp(15)
+                    width: dp(15)
+                    size_hint_max_x: dp(15)
+                    size_hint_max_y: dp(15)
+                    size_hint_y: 0
+
+                    canvas.before:
+                        Color:
+                            rgba: [0.7,0.7,0.7,0.9]
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+                    CheckBox:
+                        active:0
+            Label:
+                text: "TEXTÃO EXEMPLO Code.exe chrome_100_percent.pak Code.VisualElementsManifest.xml"
+                color: '#000000'
+
+            Label:
+                text: "TEXTÃO EXEMPLO Code.exe chrome_100_percent.pak Code.VisualElementsManifest.xml"
+                color: '#000000'
+
+            Label:
+                text: "TEXTÃO EXEMPLO Code.exe chrome_100_percent.pak Code.VisualElementsManifest.xml"
+                color: '#000000'
+#
+    
+
+
