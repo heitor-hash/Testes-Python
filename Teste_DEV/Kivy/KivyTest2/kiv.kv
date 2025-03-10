@@ -1,0 +1,30 @@
+<Home>:
+
+  canvas.before:
+    Color: 
+      rgba: (1,1,1,1)
+    Rectangle: 
+      pos: self.pos
+      size: self.size
+
+  TabbedPanel:
+    do_default_tab: False
+    orientation: 'lr-tb'
+    spacing: dp(5)
+    padding: dp(5)
+
+    # FILE TAB
+    TabbedPanelItem:
+      text: 'FILE'
+      color: (1,0,0,1)
+
+      # BODY
+      BoxLayout:
+
+        Label:
+          text: "TEXTO EXEMPLO"
+          color: "#000000"
+
+        Button:
+          text: "BOTÃO EXEMPLO"
+          color: "#000000"
