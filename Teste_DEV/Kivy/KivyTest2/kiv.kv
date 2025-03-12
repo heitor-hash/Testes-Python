@@ -6,12 +6,20 @@
     Rectangle: 
       pos: self.pos
       size: self.size
+  padding: dp(5)
 
   TabbedPanel:
     do_default_tab: False
     orientation: 'lr-tb'
-    spacing: dp(5)
-    padding: dp(5)
+    spacing: dp(0)
+    padding: dp(0)
+
+    canvas.before:
+      Color: 
+        rgba: (1,1,1,1)
+      Rectangle: 
+        pos: self.pos
+        size: self.size
 
     # FILE TAB
     TabbedPanelItem:
@@ -20,11 +28,14 @@
 
       # BODY
       BoxLayout:
+        orientation: 'vertical'
 
         Label:
+          id: File_content_label
           text: "TEXTO EXEMPLO"
           color: "#000000"
 
         Button:
           text: "BOTÃO EXEMPLO"
           color: "#000000"
+          on_release: root.easy_read_file()
