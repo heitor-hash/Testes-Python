@@ -9,36 +9,42 @@ class Tabela():
     self.respostas_possiveis = respostas_possiveis
     
   def create_tabela(self) -> None:
+    global lista_de_celulas
     with dpg.group(parent="main_window"):
-      dpg.add_table(
+      with dpg.table(
+        tag='Tabela',
         borders_innerH=True,
         borders_innerV=True,
         borders_outerH=True,
         borders_outerV=True,
-        resizable=False,
-        tag='Tabela',
-        show=True
-      )
-      with dpg.group(parent='Tabela'):
+        resizable=True,
+        show=True,
+        scrollY=True,
+        row_background=True
+      ):
+        # Adiciona colunas baseadas na primeira linha
+        if self.respostas_certas:
+          num_colunas = len(self.respostas_certas[0])
+          for _ in range(num_colunas):
+            dpg.add_table_column()
+
         row_index = 0
         for row in self.respostas_certas:
-          col_index = 0
-          dpg.add_table_row(parent='Tabela', tag=f'row{row_index}')
-          with dpg.group(parent=f'row{row_index}'):
-            dpg.add_table_cell(parent=f'row{row_index}', label=row[0])
-            for cell in row[1:]:
-              a = Callable_Cell(r_certa=cell, ref=f"cell{row_index}-{col_index}")
+          with dpg.table_row(tag=f'row{row_index}'):
+            # Primeira célula (texto)
+            dpg.add_text(row[0])
+            # Células seguintes (combos)
+            for col_index, valor in enumerate(row[1:]):
+              combo_tag = f"cell{row_index}-{col_index}"
+              a = Callable_Cell(r_certa=valor, ref=combo_tag)
               lista_de_celulas.append(a)
-              dpg.add_table_cell(parent=f'row{row_index}', tag=f"cellholder{row_index}-{col_index}")
-              with dpg.group(parent=f"cellholder{row_index}-{col_index}"):
-                dpg.add_combo(items=self.respostas_possiveis[col_index],
-                  tag=f"cell{row_index}-{col_index}")
-              print(f'col : {col_index}')
-              col_index += 1
-          print(f'row : {row_index}')
+              dpg.add_combo(
+                items=self.respostas_possiveis[col_index],
+                default_value='',
+                tag=combo_tag
+              )
           row_index += 1
               
-
 class Callable_Cell():
   def __init__(self, r_certa, ref):
     self.resposta_certa = r_certa
@@ -49,8 +55,9 @@ class Callable_Cell():
       return count + 1
     else:
       return count
-    
-    
+
+
+
 tabela_principal = Tabela(
   respostas_certas=[
     ['Banco','A','Rigma','Ativo'],
@@ -59,16 +66,39 @@ tabela_principal = Tabela(
   ],
   respostas_possiveis=
   [
-    ['A', 'B', 'C'],
-    ['Ligma','Figma', 'Rigma'],
-    ['Ativo', 'Passivo']
+    ['','A', 'B', 'C'],
+    ['','Ligma','Figma', 'Rigma'],
+    ['','Ativo', 'Passivo']
   ]
 )
 
 dpg.create_context()
 
+# Theme
+with dpg.theme(tag='main_theme'):
+  with dpg.theme_component():
+    dpg.add_theme_color(dpg.mvThemeCol_Text, (255,255,255))
+    dpg.add_theme_color(dpg.mvThemeCol_FrameBg, (70,70,80))
+    dpg.add_theme_color(dpg.mvThemeCol_TableRowBg, (40,40,40))
+    dpg.add_theme_color(dpg.mvThemeCol_TableRowBgAlt, (55,55,55))
+    dpg.add_theme_color(dpg.mvThemeCol_TableBorderLight, (140,140,140,180))
+    dpg.add_theme_color(dpg.mvThemeCol_TableBorderStrong, (170,170,170,210))
+
+with dpg.theme(tag='wrong'):
+  with dpg.theme_component():
+    dpg.add_theme_color(dpg.mvThemeCol_ChildBg, (200,0,0))
+
+with dpg.theme(tag='correct'):
+  with dpg.theme_component():
+    dpg.add_theme_color(dpg.mvThemeCol_ChildBg, (0,200,0))
+
+
+with dpg.font_registry():
+  default_font = dpg.add_font("C:\\Windows\\Fonts\\arial.ttf", 20)
+
 with dpg.window(label="Janela Principal", tag="main_window"):
-  pass
+  dpg.bind_font(default_font)
+  dpg.bind_theme('main_theme')
 
 tabela_principal.create_tabela()
 
