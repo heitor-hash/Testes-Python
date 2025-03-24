@@ -11,3 +11,6 @@ python -m nuitka \
 --follow-imports
 
 --remove-output
+
+# Alternativa de C
+--mingw64
