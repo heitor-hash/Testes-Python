@@ -1,0 +1,1 @@
+py -3.13 -m nuitka --standalone --onefile --windows-console-mode=disable --remove-output main.py

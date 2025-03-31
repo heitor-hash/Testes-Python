@@ -16,3 +16,11 @@ Teste_DEV/PyGui/Teste2/nuitka-crash-report.xml
 Teste_DEV/PyGui/Teste2/main.dist/*
 Teste_DEV/oxiapp/*
 
+Teste_DEV/Builder/build/*
+Teste_DEV/Builder/dist/*
+Teste_DEV/DearPyGui/Teste2/build/*
+Teste_DEV/DearPyGui/Teste2/dist/*
+Teste_DEV/Builder/App.spec
+Teste_DEV/Builder/App2.spec
+Teste_DEV/Builder/lists.spec
+Teste_DEV/DearPyGui/Teste3/__pycache__/modpy.cpython-313.pyc

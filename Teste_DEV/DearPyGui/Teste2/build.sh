@@ -1,0 +1,1 @@
+py -3.13 -m pyinstaller --onefile main.py

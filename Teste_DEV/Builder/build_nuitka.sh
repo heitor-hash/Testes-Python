@@ -1,0 +1,1 @@
+py -3.13 -m nuitka --standalone --onefile --remove-output main.py
