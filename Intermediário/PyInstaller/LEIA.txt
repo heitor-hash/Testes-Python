@@ -1,0 +1,12 @@
+O builder não ira funcionar por padrão, você precisa de ter o
+pyinstaller no python,
+
+para isso:
+1 - abra o cmd
+2 - digite: pip install pyinstaller
+pronto
+
+para usar o upx (reduz o tamanho do executavel)
+1 - baixe o upx do github oficial
+2 - coloque em uma pasta qualquer
+3 - quando for usar coloque o caminho para a pasta

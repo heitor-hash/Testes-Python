@@ -24,3 +24,7 @@ Teste_DEV/Builder/App.spec
 Teste_DEV/Builder/App2.spec
 Teste_DEV/Builder/lists.spec
 Teste_DEV/DearPyGui/Teste3/__pycache__/modpy.cpython-313.pyc
+Intermediário/PyInstaller/Python em executavel.spec
+Intermediário/PyInstaller/build/*
+Intermediário/PyInstaller/dist/*
+Intermediário/PyInstaller/Python em executavel.exe.lnk
