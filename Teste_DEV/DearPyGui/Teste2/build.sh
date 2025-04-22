@@ -1,1 +1,1 @@
-py -3.13 -m pyinstaller --onefile main.py
+pyinstaller --clean --noconsole --optimize "2" --exclude-module tests --exclude-module xml --onefile --name="Arquivo da Atividade" main.py

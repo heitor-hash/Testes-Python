@@ -99,10 +99,22 @@ tabela_principal = Tabela(
   respostas_certas=[
     # 1ª coluna é indice
     # 2 a 4 é respostas
-    ['Caixa', "Bem", 'Ativo'],
-    ['Estoque', 'Bem', 'Ativo'],
-    ['Capital Social', 'Obrigação', 'Passivo'],
-    ['Veículos', 'Bem', 'Ativo'],
+['Caixa',	'Bem',	'Ativo'], 
+['Estoque',	'Bem',	'Passivo'],
+['Capital Social',	'Direito',	'Ativo'],
+['Veículos',	'Bem',	'Ativo'],
+['Financiamentos',	'Bem',	'Ativo'],
+['Duplicatas a receber',	'Direito',	'Ativo'],
+['Reserva de lucros',	'Bem',	'Passivo'],
+['Fornecedor',	'Direito',	'Ativo'],
+['Energia Elétrica a pagar',	'Obrigação',	'Ativo'],
+['Salários a pagar',	'Obrigação',	'Ativo',],
+['Equipamentos',	'Bem',	'Ativo'],
+['Terrenos',	'Bem',	'Ativo'],
+['Intangível',	'Direito',	'Ativo'],
+['Imobilizado',	'Direito',	'Passivo'],
+['Máquinas', 	'Bem',	'Ativo',],
+['Prédios', 	'Bem',	'Ativo',]
   ],
   respostas_possiveis=
   [
